@@ -1,0 +1,51 @@
+openapi: 3.0.0
+servers:
+  - url: http://openapi_hello_world.{stage}:{port}/v1
+    variables:
+      stage:
+        default: demo
+      port:
+        enum:
+          - '443'
+          - '8080'
+        default: '8080'
+info:
+  description: 
+    This is a sample server for the openapi hello world application.
+  version: 1.0.0
+  title: OpenAPI Hello World
+tags:
+  - name: tag_name_1
+    description: tag name 1 description
+paths:
+  /helloworld:
+    get:
+      summary: test hello world endpoint
+      description: 'returns hello world'
+      parameters:
+      - in: query
+        name: language
+        schema:
+          type: string
+          # default: "english"
+        required: false
+        description: hello world in your language of choice
+        example: "english"
+      responses:
+        default:
+          description: successful operation  
+        '200':
+          description: hello world response is desired language
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  language:
+                    type: string
+                    default: "english"
+                    description: The requested language
+                  helloworld:
+                    type: string
+                    default: "hello world"
+                    description: actual hello world in the requested language

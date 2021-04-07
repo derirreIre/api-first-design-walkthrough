@@ -1,0 +1,13 @@
+{{>partial_header}}
+package {{packageName}}
+
+{{#operations}}
+import (
+	"github.com/gin-gonic/gin"
+){{#operation}}
+
+// {{nickname}} - {{{summary}}}
+func {{nickname}}(c *gin.Context) {
+    // let's use our business logic file...
+    TranslateGetBusinessLogic(c)
+}{{/operation}}{{/operations}}

@@ -1,0 +1,59 @@
+openapi: 3.0.0
+servers:
+  - url: http://translate.{stage}:{port}/v1
+    variables:
+      stage:
+        default: demo
+      port:
+        enum:
+          - '443'
+          - '8081'
+        default: '8081'
+info:
+  description: 
+    This is a sample server for the openapi translater application.
+  version: 1.0.0
+  title: OpenAPI translate
+tags:
+  - name: tag_name_1
+    description: tag name 1 description
+paths:
+  /translate:
+    get:
+      summary: translate hello world endpoint
+      description: 'returns hello world in a language'
+      parameters:
+      - in: query
+        name: language
+        schema:
+          type: string
+          default: "english"
+        required: false
+        description: hello world in your language of choice
+        example: "english"
+      - in: query
+        name: text
+        schema:
+          type: string
+          default: "hello world"
+        required: false
+        description: hello world in your language of choice
+        example: "hello world"
+      responses:
+        default:
+          description: successful operation  
+        '200':
+          description: hello world response is desired language
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  language:
+                    type: string
+                    default: "english"
+                    description: The requested language
+                  text:
+                    type: string
+                    default: "hello world"
+                    description: translated text in the requested language

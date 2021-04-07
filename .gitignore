@@ -1,0 +1,7 @@
+!source_code/hello_world/python_flask_server/openapi_server/controllers/default_controller_impl.py
+source_code/hello_world/python_flask_server/
+!source_code/translate/go-gin-server/go/api_default_business_logic.go
+source_code/translate/
+__pycache__
+_venv/
+openapitools.json
